@@ -3,7 +3,7 @@ title: "Testing Performance of Minimum Variance and Tangency Portfolios."
 date: 2019-03-15
 translationKey: "min-var-tangency-r"
 categories : ["jekyll", "update","archive"]
-draft : true
+draft : false
 author : "Cristian Guevara"
 math : true
 ---

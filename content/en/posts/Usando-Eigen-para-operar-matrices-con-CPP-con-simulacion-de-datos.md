@@ -2,7 +2,7 @@
 title: "Using Eigen for Matrix Operations in C++ with Data Simulation"
 date: 2020-06-06
 translationKey: "using-eigen-matrix-cpp"
-draft : true 
+draft : false 
 math: true
 ---
 

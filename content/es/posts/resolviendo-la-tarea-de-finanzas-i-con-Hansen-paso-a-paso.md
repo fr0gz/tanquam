@@ -3,7 +3,7 @@ title: "Probando el Rendimiento de Portafolios de Varianza Mínima y Tangencia e
 date: 2019-03-15
 translationKey: "min-var-tangency-r"
 categories: ["jekyll", "actualización", "archivo"]
-draft: true
+draft: false
 author: "Cristian Guevara"
 ---
 
