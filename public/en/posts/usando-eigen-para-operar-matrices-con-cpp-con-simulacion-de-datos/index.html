@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Using Eigen for Matrix Operations in C&#43;&#43; with Data Simulation | Ex Ungue Leonem | The Lion´s Lair</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Summary Eigen is a C&#43;&#43; linear algebra library that performs the heavy lifting behind the matrix operations used by TensorFlow. My motivation for writing this post is to dive deeper into the technologies that power neural network libraries, with the goal of learning how to build my own.
+This becomes especially relevant with the rise of TinyML and TensorFlow Lite, which enable neural network algorithms to run on small devices without requiring an internet connection or cloud processing.">
+    <meta name="generator" content="Hugo 0.128.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+  
+    <link rel="stylesheet" href="/css/syntax.css">
+  
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/en/posts/usando-eigen-para-operar-matrices-con-cpp-con-simulacion-de-datos/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/en/posts/usando-eigen-para-operar-matrices-con-cpp-con-simulacion-de-datos/">
+  <meta property="og:site_name" content="Ex Ungue Leonem | The Lion´s Lair">
+  <meta property="og:title" content="Using Eigen for Matrix Operations in C&#43;&#43; with Data Simulation">
+  <meta property="og:description" content="Summary Eigen is a C&#43;&#43; linear algebra library that performs the heavy lifting behind the matrix operations used by TensorFlow. My motivation for writing this post is to dive deeper into the technologies that power neural network libraries, with the goal of learning how to build my own.
+This becomes especially relevant with the rise of TinyML and TensorFlow Lite, which enable neural network algorithms to run on small devices without requiring an internet connection or cloud processing.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-06-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2020-06-06T00:00:00+00:00">
+
+  <meta itemprop="name" content="Using Eigen for Matrix Operations in C&#43;&#43; with Data Simulation">
+  <meta itemprop="description" content="Summary Eigen is a C&#43;&#43; linear algebra library that performs the heavy lifting behind the matrix operations used by TensorFlow. My motivation for writing this post is to dive deeper into the technologies that power neural network libraries, with the goal of learning how to build my own.
+This becomes especially relevant with the rise of TinyML and TensorFlow Lite, which enable neural network algorithms to run on small devices without requiring an internet connection or cloud processing.">
+  <meta itemprop="datePublished" content="2020-06-06T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2020-06-06T00:00:00+00:00">
+  <meta itemprop="wordCount" content="878">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Using Eigen for Matrix Operations in C&#43;&#43; with Data Simulation">
+  <meta name="twitter:description" content="Summary Eigen is a C&#43;&#43; linear algebra library that performs the heavy lifting behind the matrix operations used by TensorFlow. My motivation for writing this post is to dive deeper into the technologies that power neural network libraries, with the goal of learning how to build my own.
+This becomes especially relevant with the rise of TinyML and TensorFlow Lite, which enable neural network algorithms to run on small devices without requiring an internet connection or cloud processing.">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/en/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Ex Ungue Leonem | The Lion´s Lair
+      
+    </a>
+    <div class="flex-l items-center">
+      
+<h4></h4>
+<ul class="pl0 mr3">
+    
+    <li class="list f5 f4-ns fw4 dib pr3">
+        <a class="hover-white white-90 no-underline" href="/es/posts/usando-eigen-para-operar-matrices-con-cpp-con-simulacion-de-datos/">es</a>
+    </li>
+    
+</ul>
+
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/whoami/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/posts/" title="Blog page">
+              Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/categories/" title="Categories page">
+              Categories
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Using Eigen for Matrix Operations in C&#43;&#43; with Data Simulation</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-06-06T00:00:00Z">June 6, 2020</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><h2 id="summary">Summary</h2>
+<p><strong>Eigen</strong> is a C++ linear algebra library that performs the heavy lifting behind the matrix operations used by TensorFlow. My motivation for writing this post is to dive deeper into the technologies that power neural network libraries, with the goal of learning how to build my own.</p>
+<p>This becomes especially relevant with the rise of <strong>TinyML</strong> and <strong>TensorFlow Lite</strong>, which enable neural network algorithms to run on small devices without requiring an internet connection or cloud processing. This practical application has sparked my curiosity, and understanding how these systems work at a low level seems increasingly important for the near future.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>First, we need to load the dependencies. In this particular case, what I want to do is import tools from the Eigen library to construct vectors, as well as the matrix operation I want to perform, which is linear regression.</p>
+<p>I also want to populate my vectors with a bunch of random data. So, I’ll need a random number generator along with the probability distributions from which I want to sample those numbers. (C++ supports a wide variety of random number generators and distributions.) For this, I’ll need to use tools from the <!-- raw HTML omitted --> header.</p>
+<p>In addition, I want to benchmark the performance of these operations in order to compare them with NumPy later. To do that, I’ll need to set up a clock object to measure execution time.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-cpp" data-lang="cpp"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#6272a4">/******************************************************************************
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#6272a4">  Prácticas de matrices con Eigen: Haciendo una Regresion Lineal
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#6272a4">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#6272a4">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#6272a4">  Copyright 2020 - Cristián Andrés Guevara Kalil &lt;cguevarak@pm.me&gt;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#6272a4">  University of Chile
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#6272a4">  Redistribution and use in source and binary forms, with or without
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#6272a4">  modification, are permitted provided that the following conditions
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#6272a4">  are met:
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#6272a4">  1. Redistributions of source code must retain the above copyright
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#6272a4">  notice, this list of conditions and the following disclaimer.
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#6272a4">  2. Redistributions in binary form must reproduce the above copyright
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#6272a4">  notice, this list of conditions and the following disclaimer in the
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#6272a4">  documentation and/or other materials provided with the distribution.
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#6272a4">  3. Neither the name of the copyright holder nor the names of its
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span><span style="color:#6272a4">  contributors may be used to endorse or promote products derived from
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#6272a4">  this software without specific prior written permission.
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span><span style="color:#6272a4">  Complete BSD-3-clause License: https://opensource.org/licenses/BSD-3-Clause
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span><span style="color:#6272a4">******************************************************************************/</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;iostream&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;time.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;random&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;Eigen/Dense&gt;</span></span></span></code></pre></div>
+<h2 id="running-the-simulation-generating-my-data">Running the Simulation: Generating My Data</h2>
+<p>The first step is to generate random data. To do that, I’ll need a pseudorandom number generator — in this case, a Mersenne Twister. I’m setting the seed to 24 because it’s 42 reversed (Douglas Adams readers know what that means: so long, and thanks for all the fish). This makes the experiment reproducible.</p>
+<p>Next, I define the normal distributions I’ll be using — one for x and one for y. To generate a standard normal distribution, you need to specify its mean and standard deviation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-cpp" data-lang="cpp"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span> 	std<span style="color:#ff79c6">::</span>mt19937_64 mt_engine{ <span style="color:#bd93f9">24</span> };
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span> 	std<span style="color:#ff79c6">::</span>normal_distribution<span style="color:#ff79c6">&lt;</span><span style="color:#8be9fd">double</span><span style="color:#ff79c6">&gt;</span> disx(<span style="color:#bd93f9">10</span>, <span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	std<span style="color:#ff79c6">::</span>normal_distribution<span style="color:#ff79c6">&lt;</span><span style="color:#8be9fd">double</span><span style="color:#ff79c6">&gt;</span> disy(<span style="color:#bd93f9">100</span>, <span style="color:#bd93f9">15</span>);</span></span></code></pre></div>
+<h2 id="building-the-matrices">Building the Matrices</h2>
+<p>Now let’s bring in the Eigen library. Conceptually, what I want to do is create a structure to store the data that will represent my vector x and vector y. To perform this operation, the code uses modern C++ syntax, so the proper configuration is needed to ensure it compiles correctly.</p>
+<p>Eigen&rsquo;s syntax is very semantic: you declare a matrix to store double-type values; a matrix to store float-type values; or, for example, a 5000×2 zero matrix that will hold the data generated by my engine and drawn from a distribution with previously defined parameters.</p>
+<p>However, one part that deserves further reflection is how functions are applied to matrices. This is the specific way I implement the concept of taking numbers from my distribution and storing them in the matrix.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-cpp" data-lang="cpp"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>    Eigen<span style="color:#ff79c6">::</span>MatrixXd x <span style="color:#ff79c6">=</span> Eigen<span style="color:#ff79c6">::</span>MatrixXf<span style="color:#ff79c6">::</span>Zero(<span style="color:#bd93f9">5000</span>,<span style="color:#bd93f9">2</span>).unaryExpr([<span style="color:#ff79c6">&amp;</span>](<span style="color:#8be9fd">double</span> dummy){<span style="color:#ff79c6">return</span> <span style="color:#50fa7b">disx</span>(mt_engine);});
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    Eigen<span style="color:#ff79c6">::</span>MatrixXd y <span style="color:#ff79c6">=</span> Eigen<span style="color:#ff79c6">::</span>MatrixXf<span style="color:#ff79c6">::</span>Zero(<span style="color:#bd93f9">5000</span>,<span style="color:#bd93f9">1</span>).unaryExpr([<span style="color:#ff79c6">&amp;</span>](<span style="color:#8be9fd">double</span> dummy){<span style="color:#ff79c6">return</span> <span style="color:#50fa7b">disy</span>(mt_engine);});
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    Eigen<span style="color:#ff79c6">::</span>MatrixXd xtx <span style="color:#ff79c6">=</span> x.transpose() <span style="color:#ff79c6">*</span> x;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    Eigen<span style="color:#ff79c6">::</span>MatrixXd xty <span style="color:#ff79c6">=</span> x.transpose() <span style="color:#ff79c6">*</span> y;</span></span></code></pre></div>
+<p>After generating the data, the idea I&rsquo;m trying to express is: &ldquo;assign to the variable xtx the value of x transposed times x.&rdquo;
+Similarly, the variable xty stores the result of x transposed times y.</p>
+<p>For readers with a background in economics or finance, this is no mystery: these are the core components of the matrix formula to compute the betas in a linear regression:</p>
+<p>\begin{aligned}
+\hat{\beta} = (X&rsquo; X)^{-1} (X&rsquo; Y)
+\end{aligned}</p>
+<h2 id="calculating-the-inverse-and-the-betas">Calculating the inverse and the Betas</h2>
+<p>Now, to compute the inverse, Eigen provides a quite semantic function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-cpp" data-lang="cpp"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>   std<span style="color:#ff79c6">::</span>cout <span style="color:#ff79c6">&lt;&lt;</span> <span style="color:#f1fa8c">&#34;Inversa de X&#39;*X&#34;</span> <span style="color:#ff79c6">&lt;&lt;</span> std<span style="color:#ff79c6">::</span>endl;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>   std<span style="color:#ff79c6">::</span>cout <span style="color:#ff79c6">&lt;&lt;</span> xtx.inverse() <span style="color:#ff79c6">&lt;&lt;</span> std<span style="color:#ff79c6">::</span>endl;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>   std<span style="color:#ff79c6">::</span>cout <span style="color:#ff79c6">&lt;&lt;</span> <span style="color:#f1fa8c">&#34;Betas: &#34;</span> <span style="color:#ff79c6">&lt;&lt;</span> std<span style="color:#ff79c6">::</span>endl;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>   std<span style="color:#ff79c6">::</span>cout <span style="color:#ff79c6">&lt;&lt;</span> xtx.inverse() <span style="color:#ff79c6">*</span> xty <span style="color:#ff79c6">&lt;&lt;</span> std<span style="color:#ff79c6">::</span>endl;</span></span></code></pre></div>
+<h2 id="performing-the-benchmarking">Performing the Benchmarking</h2>
+<p>To do the benchmarking, what I did was wrap my little program from the beginning with a timer as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-cpp" data-lang="cpp"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>  clock_t begin <span style="color:#ff79c6">=</span> clock();
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>  <span style="color:#8be9fd">double</span> elapsed_secs <span style="color:#ff79c6">=</span> <span style="color:#8be9fd">double</span>(end <span style="color:#ff79c6">-</span> begin) <span style="color:#ff79c6">/</span> CLOCKS_PER_SEC;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>  std<span style="color:#ff79c6">::</span>cout <span style="color:#ff79c6">&lt;&lt;</span> <span style="color:#f1fa8c">&#34;Time taken : &#34;</span> <span style="color:#ff79c6">&lt;&lt;</span> elapsed_secs <span style="color:#ff79c6">&lt;&lt;</span> std<span style="color:#ff79c6">::</span>endl;</span></span></code></pre></div>
+<h2 id="finally">Finally:</h2>
+<p>The applications of the Eigen library are quite interesting, and I must say that according to my comparison with similar operations in NumPy, in my case at least, it was quite fast (around 2.43 vs 12 seconds). As a thank you, I want to express my gratitude to the open-source community, which made the successful implementation of this application possible.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/en/" >
+    &copy;  Ex Ungue Leonem | The Lion´s Lair 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

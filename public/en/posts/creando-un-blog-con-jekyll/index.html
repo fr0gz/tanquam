@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Creando Un Blog Con Jekyll | Ex Ungue Leonem | The Lion´s Lair</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Resumen Leyendo este post aprenderás: como crear un sitio web utilizando la herramienta jekyll. Para llegar a este objetivo, también aprenderás un poquito de: Linea de Comandos de windows, que es el lenguaje de programación ruby, que es el gestor de paquetes gem (porque te voy a enseñar a bajartelos y usarlos), como se desarrolla una investigación en internet para apoyar un diseño, y los criterios que utilicé para tomar decisiones con el objetivo de crear este blog.">
+    <meta name="generator" content="Hugo 0.128.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="Cristian Guevara">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+  
+    <link rel="stylesheet" href="/css/syntax.css">
+  
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/en/posts/creando-un-blog-con-jekyll/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/en/posts/creando-un-blog-con-jekyll/">
+  <meta property="og:site_name" content="Ex Ungue Leonem | The Lion´s Lair">
+  <meta property="og:title" content="Creando Un Blog Con Jekyll">
+  <meta property="og:description" content="Resumen Leyendo este post aprenderás: como crear un sitio web utilizando la herramienta jekyll. Para llegar a este objetivo, también aprenderás un poquito de: Linea de Comandos de windows, que es el lenguaje de programación ruby, que es el gestor de paquetes gem (porque te voy a enseñar a bajartelos y usarlos), como se desarrolla una investigación en internet para apoyar un diseño, y los criterios que utilicé para tomar decisiones con el objetivo de crear este blog.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-10-10T00:04:40-03:00">
+    <meta property="article:modified_time" content="2019-10-10T00:04:40-03:00">
+
+  <meta itemprop="name" content="Creando Un Blog Con Jekyll">
+  <meta itemprop="description" content="Resumen Leyendo este post aprenderás: como crear un sitio web utilizando la herramienta jekyll. Para llegar a este objetivo, también aprenderás un poquito de: Linea de Comandos de windows, que es el lenguaje de programación ruby, que es el gestor de paquetes gem (porque te voy a enseñar a bajartelos y usarlos), como se desarrolla una investigación en internet para apoyar un diseño, y los criterios que utilicé para tomar decisiones con el objetivo de crear este blog.">
+  <meta itemprop="datePublished" content="2019-10-10T00:04:40-03:00">
+  <meta itemprop="dateModified" content="2019-10-10T00:04:40-03:00">
+  <meta itemprop="wordCount" content="1666">
+  <meta itemprop="keywords" content="Jekyll,Update,Archive">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Creando Un Blog Con Jekyll">
+  <meta name="twitter:description" content="Resumen Leyendo este post aprenderás: como crear un sitio web utilizando la herramienta jekyll. Para llegar a este objetivo, también aprenderás un poquito de: Linea de Comandos de windows, que es el lenguaje de programación ruby, que es el gestor de paquetes gem (porque te voy a enseñar a bajartelos y usarlos), como se desarrolla una investigación en internet para apoyar un diseño, y los criterios que utilicé para tomar decisiones con el objetivo de crear este blog.">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/en/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Ex Ungue Leonem | The Lion´s Lair
+      
+    </a>
+    <div class="flex-l items-center">
+      
+<h4></h4>
+<ul class="pl0 mr3">
+    
+    <li class="list f5 f4-ns fw4 dib pr3">
+        <a class="hover-white white-90 no-underline" href="/es/posts/creando-un-blog-con-jekyll/">es</a>
+    </li>
+    
+</ul>
+
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/whoami/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/posts/" title="Blog page">
+              Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/categories/" title="Categories page">
+              Categories
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Creando Un Blog Con Jekyll</h1>
+      
+      <p class="tracked"><strong>Cristian Guevara</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-10-10T00:04:40-03:00">October 10, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><h2 id="resumen">Resumen</h2>
+<p>Leyendo este post aprenderás: como crear un sitio web utilizando la herramienta jekyll. Para llegar a este objetivo, también aprenderás un poquito de: Linea de Comandos de windows, que es el lenguaje de programación ruby, que es el gestor de paquetes gem (porque te voy a enseñar a bajartelos y usarlos), como se desarrolla una investigación en internet para apoyar un diseño, y los criterios que utilicé para tomar decisiones con el objetivo de crear este blog.</p>
+<h2 id="introduccion">Introduccion</h2>
+<p>En este post abordaré de manera lo más completa, pero a la vez pedagógica posible la creación de un blog utilizando jekyll.</p>
+<p>Eso incluye la etapa de &ldquo;diseño&rdquo;, scopear el proyecto, estudiar pros y contras de alternativas, discutir brevemente las distintas razones por las que hice el proyecto en jekyll, y luego la parte de implementacion en la cual se ejecuta la planificacion y el diseño derivados arriba.</p>
+<h2 id="diseñando-el-blog">Diseñando el Blog</h2>
+<p>Primero, busqué blogs sobre tecnología que me gustaban y que tenia como referente. El recurso que me ayudó
+fue el proyecto de github engineering blogs &ldquo;a curated list of engineering blogs&rdquo;; dentro de los que más me llaman
+la atencion y me motivaron a nivel de empresas fueron: el de UBER y el de Instagram. Es increible para la
+motivación ver el 1er post del blog técnico de instagram, cuyo título habla por sí mismo:</p>
+<p>&ldquo;Keeping Instagram up with over a million new users in twelve hours&rdquo;</p>
+<h2 id="delimitando-alternativas">Delimitando Alternativas</h2>
+<p>De la fase previa, vi que habían varias alternativas: django, wordpress, jekyll, pelican, vuepress, y una
+pila de otras. Acá se revisan varias fuentes, tales como otros blogs, foros, comunidades de distinto tipo
+(Si, stackoverflow, quora, listas de mails, todas son comunidades). También tengo que revisar material y
+hacer una estimación gruesa de los costos de cada curso de acción. Por ejemplo, cuanto me voy a demorar,
+¿es muy dificil de aprender?¿hay recursos para preguntar?</p>
+<p>Como explicacion de alto nivel, creo que django es mucho para lo que quiero hacer. Sirve para otras cosas, más
+potentes, además tiene otra curva de aprendizaje y empresas como Cornershop solicitan en sus perfiles Django
+por ejemplo*</p>
+<h2 id="por-qué-jekyll">¿Por qué jekyll?</h2>
+<p>Mi primera razón y más importante, es que los sitios que más me gustaron en mi búsqueda estaban
+desarrollados con esta herramienta. Como hago esto porque quiero, y quiero entretenerme haciendo este blog
+es una razón suficientemente válida. Sin embargo, como es un blog que busca ser pedagógico y técnico a la vez,
+tienen que haber razones que se linkeen a lo pedagógico y a lo técnico (sipo, quiero que sea un blog serio, no chamullo)</p>
+<p>En segundo lugar, es una forma de trabajar ruby sin tener necesariamente que dejar estancados mis otros proyectos.
+Ruby me llama la atención porque tiene buena literatura, rails tiene súper buena fama, y al parecer es
+fácil de trabajar (o sea, es eficiente en términos de time-to-market: gasto poco tiempo en aprenderlo
+y logro el objetivo que es sacar este blog lo antes posible). No por nada Richard de Sylicon Valley le dice a su doctor
+que aprendió Ruby on Rails en un fin de semana cuando tenía 17 años.</p>
+<p>En síntesis, lo aprendo como habilitador de Jekyll y ya está, excusa perfecta para trabajar con ruby. Una tarea hecha a la medida de ruby.
+O sea, en verdad, django es re interesante pero creo que me demoraría más y no lo pasaría tan bien en el proceso, al final
+es sólo para hacer un blog. Wordpress, no me gusta porque: vulnerabilidades conocidas, y</p>
+<p>En tercer lugar, Jekyll es un generador de sitios estáticos que no tiene base de datos. En la comparativa con Wordpress por ejemplo
+hay muchos más plugins, pero eso también hace que se debilite la postura de seguridad del blog debido a que los plugins de wordpress
+son de una calidad muy variable. (como los paquetes estadisticos rebuscados en r que nadie les da mantenimiento*). El que la alternativa
+en wordpress tenga plugins de calidad variable hace que tenga que invertir tiempo en hardening que no quiero invertir sólo para tener un blog,
+o sea en la parte de mantenimiento y actualizaciones es un potencial cacho que prefiero no tener.</p>
+<p>En cuarto lugar, hay muchas opciones de implementarlo: en windows windows, en debian dentro de windows con wsl, en docker dentro de debian dentro de
+windows, además de debian sólo. Como el blog quiere comunicar, ser pedagógico y técnico, es bueno que el público objetivo más ligado al mundo de
+la FEN por ejemplo pueda implementarlo asi como tambien alguien con un trasfondo más técnico se pueda dar el gustito de implementar el blog como a él
+le guste o simplemente encuentre un contenido valorable al leer esta entrada. Es bueno que tenga esa versatilidad.</p>
+<p>En quinto lugar, tiene suficiente tiempo siendo usado para tener un montón de referencias. Esto se respalda en la calidad de los blogs en la revisión inicial
+del proyecto.</p>
+<p>Si bien pelican u otras alternativas estan teniendo auge en este mismo instante*, tiene un contra muy importante que es
+la curva de aprendizaje y el ecosistema porque luego de hacer el blog, voy a querer mantenerlo o agregarle
+cosas. Y en verdad,quiero que haya un acervo cultural comunitario de fácil acceso que me permita que sea
+sustentable la mantencion y el agregarle cosas al blog. Por ejemplo, lo primero que quiero hacer es que pueda estar en varios idiomas. Entonces,
+claramente es una ventaja relativa de jekyll que sea de fácil acceso e implementación una alternativa para hacer que el blog este en varios idiomas.</p>
+<p>Por lo tanto, lo voy a hacer en jekyll.</p>
+<h2 id="implementacion">IMPLEMENTACION</h2>
+<p>La primera parte es tomar la decision de como lo voy a instalar. Como esta expuesto más arriba, el objetivo del
+blog es técnico, pedagógico, esta orientado a esas dos audiencias y jekyll me da la versatilidad de que puede explicarse
+en fácil pero si quiero algo más sofisticado lo puedo hacer. Y por sobre todas las cosas funciona.</p>
+<p>Entonces, me queda mejor linkeado con los objetivos del proyecto para este primer post hacer la implementacion desde
+windows-windows de forma que si alguien de la FEN esta leyendo esto desde la biblioteca o cualquier sala, lo pueda implementar
+ahi mismo. Sin necesidad de instalar cosas raras, facilito, bien explicado. Pero con contenido que aporta a alguien que busca
+algo más.</p>
+<h3 id="paso-1--instalar-dependencias">Paso 1.- Instalar dependencias.</h3>
+<p>Primero, tengo que tener claro todo lo que tengo que instalar. Pero al mismo tiempo, tengo que tener claras las partes. Segundo,
+no asustarse si algo sale mal sino ver como se soluciona. Las dependencias son: ruby, gem, jekyll y bundler.</p>
+<p>Entonces, primero voy a la página de ruby y me descargo el ruby installer. Me abre el wizard de instalación.</p>
+<p>Luego, se abre una aplicacion de linea de comandos. Tengo que meter las opciones 1, 2 y 3. Se demora, y es normal.</p>
+<p>Ahora, apreto win+R escribo CMD y apreto enter. Se va a abrir el terminal de windows 10.</p>
+<p>Entonces, ahora compruebo que se haya instalado todo correctamente corriendo los siguientes comandos:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-ruby" data-lang="ruby"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>ruby <span style="color:#ff79c6">-</span>v
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>gem <span style="color:#ff79c6">-</span>v</span></span></code></pre></div>
+<p>ruby es el lenguaje de programacion con que esta escrito jekyll, sin ruby el computador no entiende el lenguaje en que esta
+escrito. gem es un gestor de paquetes de ruby. Con esto nos vamos a bajar jekyll y bundler.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-ruby" data-lang="ruby"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>gem install jekyll bundler</span></span></code></pre></div>
+<p>comprobamos que se haya bajado bien:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-ruby" data-lang="ruby"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>jekyll</span></span></code></pre></div>
+<p>ahora, aprovechamos que estamos en la terminal y creamos desde ahi una carpeta. Una forma de llamar a las carpetas es directorio, y
+es la forma en que el computador organiza los archivos, como un arbolito que tiene muchas ramas (directorios) y de esas ramas salen
+hojas (archivos). Ahora, lo que vamos a hacer es crear un directorio con un comando desde el terminal, vamos a movernos a ese
+directorio desde el terminal, es decir vamos a decirle al terminal que trabaje con ese directorio (working directory).</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>mkdir proyecto</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>creamos el directorio proyecto</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd </span>proyecto
+</span></span><span style="display:flex;"><span>pwd</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>nos movemos a proyecto. CD quiere decir &ldquo;change directory&rdquo;. pwd es un comando muy util que quiere decir &ldquo;print working directory&rdquo;, y
+nos dice cual es el directorio con el que el terminal esta trabajando. Es muy útil porque jekyll es una CLI, una aplicacion que corre
+desde la linea de comandos. Entonces es buena práctica tener claro en que directorio estoy antes de ejecutar un comando desde el
+terminal, más aun cuando me va a crear carpetas y archivos.</p>
+<p>Ahora que estamos trabajando en proyecto, corro el comando :</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>jekyll new nombre_blog</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>eso le dice a jekyll que me haga un nuevo blog. eso consiste en que me haga un directorio que a su vez contiene otros directorios y archivos.
+Esa estructura de directorios le dice al programa donde esta cada cosa que quiero modificar desde mi página web. Imagina que lo que acabas de
+hacer es obtener una caja llena de herramientas y piezas para armar un motorcito. La herramienta es jekyll, y las piezas son los directorios
+y archivos contenidos en el directorio nombre_proyecto.</p>
+<p>Ahora, corremos el siguiente comando:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>bundle exec jekyll serve</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>entonces, le digo a la herramienta bundle que ejecute el comando exec, y a jekyll que ejecute serve. Eso nos va a levantar un servidor
+en localhost. Entonces, ahora voy a mi browser favorito: chrome, opera, firefox, chromium, el que sea y en la barra escribo esta direccion:</p>
+<p>http://127.0.0.1:4000</p>
+<p>apreto enter y listo, ya cree el blog.</p>
+<h2 id="referencias">REFERENCIAS</h2>
+<p><a href="https://github.com/kilimchoi/engineering-blogs">https://github.com/kilimchoi/engineering-blogs</a></p>
+<p><a href="https://instagram-engineering.com/keeping-instagram-up-with-over-a-million-new-users-in-twelve-hours-b75298b782c5">https://instagram-engineering.com/keeping-instagram-up-with-over-a-million-new-users-in-twelve-hours-b75298b782c5</a></p>
+<p><a href="https://eng.uber.com/measuring-kotlin-build-performance/">https://eng.uber.com/measuring-kotlin-build-performance/</a></p>
+<h3 id="referencia-a-cornershop-y-django">Referencia a Cornershop y Django:</h3>
+<p><a href="https://www.getonbrd.cl/empleos/programacion/desarrollador-python-cornershop-inc-218e">https://www.getonbrd.cl/empleos/programacion/desarrollador-python-cornershop-inc-218e</a></p>
+<h3 id="ruby">RUBY</h3>
+<p>Sandy Metz Practical Object Oriented Design in Ruby. An Agile primer.</p>
+<p>Michael Hartl The Ruby on Rails Tutorial.</p>
+<p><a href="https://silicon-valley.fandom.com/wiki/Third_Party_Insourcing">https://silicon-valley.fandom.com/wiki/Third_Party_Insourcing</a></p>
+<h3 id="comparando-alternativas">COMPARANDO ALTERNATIVAS</h3>
+<p><a href="https://stackshare.io/stackups/hugo-vs-jekyll-vs-pelican">https://stackshare.io/stackups/hugo-vs-jekyll-vs-pelican</a></p>
+<p><a href="https://stackshare.io/stackups/jekyll-vs-wordpress">https://stackshare.io/stackups/jekyll-vs-wordpress</a></p>
+<p>es chistoso! -&gt; <a href="https://forestry.io/blog/is-it-time-to-move-on-from-wordpress/">https://forestry.io/blog/is-it-time-to-move-on-from-wordpress/</a></p>
+<p>Ejemplo de paquetes R a los que nadie da mantenimiento!!! *Preguntar a Gabriel Cabrera como dev de paquetes de r
+que opina al respecto:</p>
+<p><a href="https://github.com/rforge/introcompfinr">https://github.com/rforge/introcompfinr</a> A la fecha de este escrito, su latest commit fue el 2015</p>
+<p><a href="https://github.com/ibartomeus/BeeIT?fbclid=IwAR1bDKVDf75TvOOEvVagNfHnchp4AhRUo5cmtl_NFZT5n0Y4iyGSQUmJlWc">https://github.com/ibartomeus/BeeIT?fbclid=IwAR1bDKVDf75TvOOEvVagNfHnchp4AhRUo5cmtl_NFZT5n0Y4iyGSQUmJlWc</a></p>
+<p>Ejemplo de la ventaja del punto #5</p>
+<p><a href="https://forestry.io/blog/creating-a-multilingual-blog-with-jekyll/">https://forestry.io/blog/creating-a-multilingual-blog-with-jekyll/</a></p>
+<h3 id="jekyll">Jekyll</h3>
+<p><a href="https://github.com/jekyll/jekyll">https://github.com/jekyll/jekyll</a></p>
+<p><a href="https://jekyllrb.com/docs/">https://jekyllrb.com/docs/</a></p>
+<p><a href="https://talk.jekyllrb.com/">https://talk.jekyllrb.com/</a></p>
+<p>Referencia extra a sylicon valley:</p>
+<p><a href="https://spectrum.ieee.org/view-from-the-valley/computing/software/a-madefortv-compression-algorithm">https://spectrum.ieee.org/view-from-the-valley/computing/software/a-madefortv-compression-algorithm</a></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/en/" >
+    &copy;  Ex Ungue Leonem | The Lion´s Lair 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

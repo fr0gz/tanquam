@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Engineering Blog - Cristian Guevara on Ex Ungue Leonem | The Lion´s Lair</title>
+    <link>http://localhost:1313/en/</link>
+    <description>Recent content in Engineering Blog - Cristian Guevara on Ex Ungue Leonem | The Lion´s Lair</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 May 2025 21:07:40 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>http://localhost:1313/en/posts/my-first-post/</link>
+      <pubDate>Fri, 23 May 2025 21:07:40 -0400</pubDate>
+      <guid>http://localhost:1313/en/posts/my-first-post/</guid>
+      <description>Introduction This is bold text, and this is emphasized text.&#xA;Visit the Hugo website!!&#xA;\begin{aligned} P(t+h) = \frac{X + (1 - \lambda) P_k(t+h) K(t)}{N(t)} \end{aligned}</description>
+    </item>
+    <item>
+      <title>Using Eigen for Matrix Operations in C&#43;&#43; with Data Simulation</title>
+      <link>http://localhost:1313/en/posts/usando-eigen-para-operar-matrices-con-cpp-con-simulacion-de-datos/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/posts/usando-eigen-para-operar-matrices-con-cpp-con-simulacion-de-datos/</guid>
+      <description>Summary Eigen is a C++ linear algebra library that performs the heavy lifting behind the matrix operations used by TensorFlow. My motivation for writing this post is to dive deeper into the technologies that power neural network libraries, with the goal of learning how to build my own.&#xA;This becomes especially relevant with the rise of TinyML and TensorFlow Lite, which enable neural network algorithms to run on small devices without requiring an internet connection or cloud processing.</description>
+    </item>
+    <item>
+      <title>Creando Un Blog Con Jekyll</title>
+      <link>http://localhost:1313/en/posts/creando-un-blog-con-jekyll/</link>
+      <pubDate>Thu, 10 Oct 2019 00:04:40 -0300</pubDate>
+      <guid>http://localhost:1313/en/posts/creando-un-blog-con-jekyll/</guid>
+      <description>Resumen Leyendo este post aprenderás: como crear un sitio web utilizando la herramienta jekyll. Para llegar a este objetivo, también aprenderás un poquito de: Linea de Comandos de windows, que es el lenguaje de programación ruby, que es el gestor de paquetes gem (porque te voy a enseñar a bajartelos y usarlos), como se desarrolla una investigación en internet para apoyar un diseño, y los criterios que utilicé para tomar decisiones con el objetivo de crear este blog.</description>
+    </item>
+    <item>
+      <title>Testing Performance of Minimum Variance and Tangency Portfolios.</title>
+      <link>http://localhost:1313/en/posts/resolviendo-la-tarea-de-finanzas-i-con-hansen-paso-a-paso/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/posts/resolviendo-la-tarea-de-finanzas-i-con-hansen-paso-a-paso/</guid>
+      <description>Summary This post documents an early experiment I undertook during my transition from economics into engineering — applying quantitative methods in R to evaluate portfolio performance. Specifically, I revisit Assignment #1 from Finance I (Spring 2019), using it as a sandbox to understand out-of-sample evaluation of Minimum Variance and Tangency Portfolios.&#xA;The process involves:&#xA;Interpreting financial modeling questions precisely Loading and structuring data efficiently Visualizing portfolio behavior under different assumptions Producing matrices and key metrics for comparison Looking back, this was one of my first practical implementations of the Bayesian Lean Loop: observe, model, test, and refine.</description>
+    </item>
+  </channel>
+</rss>

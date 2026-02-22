@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Testing Performance of Minimum Variance and Tangency Portfolios. | Ex Ungue Leonem | The Lion´s Lair</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Summary This post documents an early experiment I undertook during my transition from economics into engineering — applying quantitative methods in R to evaluate portfolio performance. Specifically, I revisit Assignment #1 from Finance I (Spring 2019), using it as a sandbox to understand out-of-sample evaluation of Minimum Variance and Tangency Portfolios.
+The process involves:
+Interpreting financial modeling questions precisely Loading and structuring data efficiently Visualizing portfolio behavior under different assumptions Producing matrices and key metrics for comparison Looking back, this was one of my first practical implementations of the Bayesian Lean Loop: observe, model, test, and refine.">
+    <meta name="generator" content="Hugo 0.128.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="Cristian Guevara">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+  
+    <link rel="stylesheet" href="/css/syntax.css">
+  
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/en/posts/resolviendo-la-tarea-de-finanzas-i-con-hansen-paso-a-paso/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/en/posts/resolviendo-la-tarea-de-finanzas-i-con-hansen-paso-a-paso/">
+  <meta property="og:site_name" content="Ex Ungue Leonem | The Lion´s Lair">
+  <meta property="og:title" content="Testing Performance of Minimum Variance and Tangency Portfolios.">
+  <meta property="og:description" content="Summary This post documents an early experiment I undertook during my transition from economics into engineering — applying quantitative methods in R to evaluate portfolio performance. Specifically, I revisit Assignment #1 from Finance I (Spring 2019), using it as a sandbox to understand out-of-sample evaluation of Minimum Variance and Tangency Portfolios.
+The process involves:
+Interpreting financial modeling questions precisely Loading and structuring data efficiently Visualizing portfolio behavior under different assumptions Producing matrices and key metrics for comparison Looking back, this was one of my first practical implementations of the Bayesian Lean Loop: observe, model, test, and refine.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-03-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2019-03-15T00:00:00+00:00">
+
+  <meta itemprop="name" content="Testing Performance of Minimum Variance and Tangency Portfolios.">
+  <meta itemprop="description" content="Summary This post documents an early experiment I undertook during my transition from economics into engineering — applying quantitative methods in R to evaluate portfolio performance. Specifically, I revisit Assignment #1 from Finance I (Spring 2019), using it as a sandbox to understand out-of-sample evaluation of Minimum Variance and Tangency Portfolios.
+The process involves:
+Interpreting financial modeling questions precisely Loading and structuring data efficiently Visualizing portfolio behavior under different assumptions Producing matrices and key metrics for comparison Looking back, this was one of my first practical implementations of the Bayesian Lean Loop: observe, model, test, and refine.">
+  <meta itemprop="datePublished" content="2019-03-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2019-03-15T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1119">
+  <meta itemprop="keywords" content="Jekyll,Update,Archive">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Testing Performance of Minimum Variance and Tangency Portfolios.">
+  <meta name="twitter:description" content="Summary This post documents an early experiment I undertook during my transition from economics into engineering — applying quantitative methods in R to evaluate portfolio performance. Specifically, I revisit Assignment #1 from Finance I (Spring 2019), using it as a sandbox to understand out-of-sample evaluation of Minimum Variance and Tangency Portfolios.
+The process involves:
+Interpreting financial modeling questions precisely Loading and structuring data efficiently Visualizing portfolio behavior under different assumptions Producing matrices and key metrics for comparison Looking back, this was one of my first practical implementations of the Bayesian Lean Loop: observe, model, test, and refine.">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/en/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Ex Ungue Leonem | The Lion´s Lair
+      
+    </a>
+    <div class="flex-l items-center">
+      
+<h4></h4>
+<ul class="pl0 mr3">
+    
+    <li class="list f5 f4-ns fw4 dib pr3">
+        <a class="hover-white white-90 no-underline" href="/es/posts/resolviendo-la-tarea-de-finanzas-i-con-hansen-paso-a-paso/">es</a>
+    </li>
+    
+</ul>
+
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/whoami/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/posts/" title="Blog page">
+              Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/en/categories/" title="Categories page">
+              Categories
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Testing Performance of Minimum Variance and Tangency Portfolios.</h1>
+      
+      <p class="tracked"><strong>Cristian Guevara</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-03-15T00:00:00Z">March 15, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><h2 id="summary">Summary</h2>
+<p>This post documents an early experiment I undertook during my transition from economics into engineering — applying quantitative methods in R to evaluate portfolio performance. Specifically, I revisit Assignment #1 from Finance I (Spring 2019), using it as a sandbox to understand out-of-sample evaluation of <strong>Minimum Variance</strong> and <strong>Tangency Portfolios</strong>.</p>
+<p>The process involves:</p>
+<ul>
+<li>Interpreting financial modeling questions precisely</li>
+<li>Loading and structuring data efficiently</li>
+<li>Visualizing portfolio behavior under different assumptions</li>
+<li>Producing matrices and key metrics for comparison</li>
+</ul>
+<p>Looking back, this was one of my first practical implementations of the <strong>Bayesian Lean Loop</strong>: observe, model, test, and refine. At that stage, I didn’t yet have the vocabulary to describe it that way — but the mindset was already forming.</p>
+<p>Today, I continue to build on this foundation with more advanced tools like Python, Eigen (C++), and cloud-based ML workflows. But the core idea remains the same: <strong>use small-scale, structured experiments to reduce uncertainty and guide decisions</strong>.</p>
+<h2 id="cargar-y-preprocesar-los-datos">Cargar y preprocesar los datos</h2>
+<h3 id="dependencias">Dependencias</h3>
+<p>Para hacer lo que nos piden, primero es necesario cargar los datos. El dataset que nos dieron esta en archivo excel, entonces lo que yo necesito es pasar de excel a un dataframe en R.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-r" data-lang="r"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#50fa7b">library</span>(readxl) <span style="color:#6272a4">#para leer excel</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#50fa7b">library</span>(psych) <span style="color:#6272a4">#para usar describe</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#50fa7b">library</span>(timeSeries) <span style="color:#6272a4">#Desde acá, las cargué empezando la p2. Queda la documentacion por si hay problemas.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#50fa7b">library</span>(fPortfolio)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#50fa7b">library</span>(quantmod)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#50fa7b">library</span>(caTools)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#50fa7b">library</span>(dplyr)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span><span style="color:#50fa7b">library</span>(PerformanceAnalytics)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span><span style="color:#50fa7b">library</span>(ggplot2)</span></span></code></pre></div>
+<h3 id="preparación-de-los-datos">Preparación de los datos</h3>
+<p>Primero Obtenemos los datos del archivo datos limpios</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-r" data-lang="r"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>datos_limpios_10_18 <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">read_excel</span>(<span style="color:#f1fa8c">&#34;~/R Stuff/Tarea1_Hansen/datos_limpios_10_18.xlsx&#34;</span>)</span></span></code></pre></div>
+<p>También necesitamos el archivo de los retornos acumulados para gráficar.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-r" data-lang="r"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>datos_acumulado <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">read_excel</span>(<span style="color:#f1fa8c">&#34;~/R Stuff/Tarea1_Hansen/limpio_acumulado.xlsx&#34;</span>)</span></span></code></pre></div>
+<p>Obtenemos la estadistica descriptiva que se nos solicita</p>
+<h2 id="pregunta-1-a">Pregunta 1 A</h2>
+<p>Acá lo que hago es armarme las columnas por índice.
+Entonces almaceno la informacion de cada indice en un vector, para cada indice</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-r" data-lang="r"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>cum_consump <span style="color:#ff79c6">&lt;-</span> datos_acumulado[3]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>cum_manuf <span style="color:#ff79c6">&lt;-</span> datos_acumulado[5]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>cum_tech <span style="color:#ff79c6">&lt;-</span> datos_acumulado[7]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>cum_health <span style="color:#ff79c6">&lt;-</span> datos_acumulado[9]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>cum_fecha <span style="color:#ff79c6">&lt;-</span> datos_acumulado[1]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>cum_others <span style="color:#ff79c6">&lt;-</span> datos_acumulado[11]</span></span></code></pre></div>
+<p>Ahora, armo la matriz que se almacena en la variable M_acum.
+Luego, lo exporto a formato csv. Este archivo lo encontramos en el directorio en el que estamos trabajando (recordar working directory, ver post #1)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-r" data-lang="r"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>M_acum <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">cbind</span>(cum_fecha,cum_consump,cum_manuf,cum_tech,cum_health,cum_others)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#50fa7b">write.csv</span>(M_acum)</span></span></code></pre></div>
+<p>Ahora, para ejecutar la estadistica descriptiva que nos piden, usaremos la funcion ´describe´ que esta en la libreria ´psych´ , la elegí porque lo encontré fácil de usar. Además, es una función que también existe en la libreria de python ´pandas´ .</p>
+<p>En variable p1_b almaceno la respuesta a lo que me piden
+En la p1_b_auxiliar lo que hago es generar una variable sólo para sacarla media de la risk free rate en el período 2010-2018:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-r" data-lang="r"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>p1_b <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">describe</span>(datos_limpios_10_18[2<span style="color:#ff79c6">:</span><span style="color:#bd93f9">6</span>])
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>p1_b_auxiliar <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">describe</span>(datos_limpios_10_18)</span></span></code></pre></div>
+<p>Obtenemos el ratio de sharpe, manualmente, con los datos de p1_b:</p>
+<p>\begin{aligned}
+S = \frac{E[R - R_f]}{\sigma}
+\end{aligned}</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-r" data-lang="r"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>vector_medias <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">1.0716667</span>,<span style="color:#bd93f9">0.7275000</span>,<span style="color:#bd93f9">1.1608333</span>,<span style="color:#bd93f9">1.1375926</span>,<span style="color:#bd93f9">0.9993519</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>vector_rf <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">0.0277777</span>,<span style="color:#bd93f9">0.0277777</span>,<span style="color:#bd93f9">0.0277777</span>,<span style="color:#bd93f9">0.0277777</span>,<span style="color:#bd93f9">0.0277777</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>vector_sd <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">3.391754</span>,<span style="color:#bd93f9">4.017619</span>,<span style="color:#bd93f9">4.130456</span>,<span style="color:#bd93f9">3.883420</span>,<span style="color:#bd93f9">4.423253</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>vector_sharpe_indices <span style="color:#ff79c6">&lt;-</span> ((vector_medias<span style="color:#ff79c6">-</span>vector_rf)<span style="color:#ff79c6">/</span>vector_sd)</span></span></code></pre></div>
+<p>Donde corresponden correlativamente al heading de datos_limpios_10_18[2:6]
+removemos los objetos auxiliares vector_rf y p1_b_auxiliar. Con eso tenemos la P1.</p>
+<h1 id="p2-a--construir-frontera-eficiente-periodo-10-18-para-el-objeto-datos_limpios_10_1826">P2 a : construir frontera eficiente periodo 10-18 para el objeto datos_limpios_10_18[2:6]</h1>
+<p>Hacemos una variable que almacene los retornos que nos interesan con type TimeSeries usando la funcion as.timeSeries()</p>
+<p>Luego, hacemos una variable FronteraEficiente, que utiliza la funcion porfolioFrontier() de la libreria . Como argumento, le pongo la variable que acabo de crear, y como parametro constraint especifico LongOnly o sea, no venta corta.</p>
+<p>Finalmente, hago el gráfico con plot(). Dentro de la función plot pongo la variable FronteraEficiente:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-r" data-lang="r"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>retornos_10_18_ts <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">as.timeSeries</span>(datos_limpios_10_18[2<span style="color:#ff79c6">:</span><span style="color:#bd93f9">6</span>])
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>FronteraEficiente <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">portfolioFrontier</span>(retornos_10_18_ts, constraints <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;LongOnly&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#50fa7b">plot</span>(FronteraEficiente)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>tickers <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#f1fa8c">&#34;Consumption&#34;</span>, <span style="color:#f1fa8c">&#34;Manufacturing&#34;</span>, <span style="color:#f1fa8c">&#34;Tech&#34;</span>, <span style="color:#f1fa8c">&#34;Health&#34;</span>, <span style="color:#f1fa8c">&#34;Others&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>PesosFrontera <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">getWeights</span>(FronteraEficiente)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#50fa7b">colnames</span>(PesosFrontera) <span style="color:#ff79c6">&lt;-</span> tickers
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>risk_return <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">frontierPoints</span>(FronteraEficiente)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#50fa7b">write.csv</span>(risk_return, <span style="color:#f1fa8c">&#34;risk_return.csv&#34;</span>)</span></span></code></pre></div>
+<p>Aca, me da un menú de opciones para el gráfico. Pongo las que satisfacen la condicion de la pregunta y lo exporto en pdf.</p>
+<h1 id="p3-y-p4">P3 y P4</h1>
+<p>Ahora, para hacer portfolios de Minima Varianza utilizo la funcion minvariancePortfolio(), que tiene como argumento la variable de type timeSeries retornos_10_18_ts. Como parametro specs le pongo spec=porfolioSpec y en contraints, le pongo LongOnly</p>
+<p>De forma analoga, utilizo la función tangencyPortfolio, que utiliza el mismo argumento y parametros.</p>
+<p>Ahora yo quiero almacenar los pesos de cada activo de los portfolios. Para eso usaré la función getWeights(), que usará como argumento un portfolio ( en este caso, mvp o tangencia). Entonces, con getWeights() obtengo el atributo que representa los pesos o ponderaciones de ese portfolio.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-r" data-lang="r"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>mvp <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">minvariancePortfolio</span>(retornos_10_18_ts, spec<span style="color:#ff79c6">=</span><span style="color:#50fa7b">portfolioSpec</span>(), constraints<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;LongOnly&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>tangencia <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">tangencyPortfolio</span>(retornos_10_18_ts, spec<span style="color:#ff79c6">=</span><span style="color:#50fa7b">portfolioSpec</span>(), constraints<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;LongOnly&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>mvp_pesos <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">getWeights</span>(mvp)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>tangencia_pesos <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">getWeights</span>(tangencia)</span></span></code></pre></div>
+<p>Ahora que tengo los pesos del portfolio, puedo graficar.
+Entonces, yo lo que quiero hacer es un grafico de barras que represente el % de inversión en cada activo.</p>
+<p>Para eso, utilizaremos las funciones ggplot(), geom_bar(), geom_text() y otras. La idea, es que ggplot() te va armando el gráfico por capas. Entonces, cada capa es una parte del gráfico que tu puedes controlar:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-r" data-lang="r"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>mvp_df <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">data.frame</span>(mvp_pesos)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>indices <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">colnames</span>(PesosFrontera)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>  <span style="color:#50fa7b">ggplot</span>(data<span style="color:#ff79c6">=</span>mvp_df, <span style="color:#50fa7b">aes</span>(x<span style="color:#ff79c6">=</span>indices, y<span style="color:#ff79c6">=</span>mvp_pesos, fill<span style="color:#ff79c6">=</span>indices)) <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>  <span style="color:#50fa7b">geom_bar</span>(stat<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;identity&#34;</span>, position<span style="color:#ff79c6">=</span><span style="color:#50fa7b">position_dodge</span>(),colour<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;black&#34;</span>) <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  <span style="color:#50fa7b">geom_text</span>(<span style="color:#50fa7b">aes</span>(label<span style="color:#ff79c6">=</span><span style="color:#50fa7b">sprintf</span>(<span style="color:#f1fa8c">&#34;%.02f %%&#34;</span>,mvp_pesos<span style="color:#ff79c6">*</span><span style="color:#bd93f9">100</span>)),
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>            position<span style="color:#ff79c6">=</span><span style="color:#50fa7b">position_dodge</span>(width<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0.9</span>), vjust<span style="color:#ff79c6">=</span><span style="color:#bd93f9">-0.25</span>, check_overlap <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">TRUE</span>) <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>  <span style="color:#50fa7b">ggtitle</span>(<span style="color:#f1fa8c">&#34;Ponderaciones Portfolio Minima Varianza (Sin Venta Corta)&#34;</span>)<span style="color:#ff79c6">+</span> <span style="color:#50fa7b">theme</span>(plot.title <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">element_text</span>(hjust <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0.5</span>)) <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>  <span style="color:#50fa7b">labs</span>(x<span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Indices&#34;</span>, y <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Ponderaciones (%)&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>  tangencia_df <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">data.frame</span>(tangencia_pesos)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>  <span style="color:#50fa7b">ggplot</span>(data<span style="color:#ff79c6">=</span>tangencia_df, <span style="color:#50fa7b">aes</span>(x<span style="color:#ff79c6">=</span>indices, y<span style="color:#ff79c6">=</span>tangencia_pesos, fill<span style="color:#ff79c6">=</span>indices)) <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>  <span style="color:#50fa7b">geom_bar</span>(stat<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;identity&#34;</span>, position<span style="color:#ff79c6">=</span><span style="color:#50fa7b">position_dodge</span>(),colour<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;black&#34;</span>) <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>  <span style="color:#50fa7b">geom_text</span>(<span style="color:#50fa7b">aes</span>(label<span style="color:#ff79c6">=</span><span style="color:#50fa7b">sprintf</span>(<span style="color:#f1fa8c">&#34;%.02f %%&#34;</span>,tangencia_pesos<span style="color:#ff79c6">*</span><span style="color:#bd93f9">100</span>)),
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>            position<span style="color:#ff79c6">=</span><span style="color:#50fa7b">position_dodge</span>(width<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0.9</span>), vjust<span style="color:#ff79c6">=</span><span style="color:#bd93f9">-0.25</span>, check_overlap <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">TRUE</span>) <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>  <span style="color:#50fa7b">ggtitle</span>(<span style="color:#f1fa8c">&#34;Ponderaciones Portfolio de Tangencia&#34;</span>)<span style="color:#ff79c6">+</span> <span style="color:#50fa7b">theme</span>(plot.title <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">element_text</span>(hjust <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0.5</span>)) <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>  <span style="color:#50fa7b">labs</span>(x<span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Indices&#34;</span>, y <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Ponderaciones (%)&#34;</span>)</span></span></code></pre></div>
+<h1 id="p5">P5</h1>
+<p>Finalmente, me piden hacer una evaluacion fuera de muestra de los portfolios que encontré en las preguntas 3 y 4.</p>
+<p>En el excel que dieron para la tarea, nos dieron datos que iban desde el 2010 hasta el 2019. En las preguntas anteriores, tan sólo habiamos utilizado los datos correspondientes al período 2010 - 2018, entonces lo que yo tengo que hacer es calcular como le va a portfolios construidos con los pesos que encontré, metiendole los datos correspondientes al periodo 2019.</p>
+<p>Con eso, tengo que comparar.</p>
+<p>Resultado: El portfolio mvp tiene un poquitito más de retorno esperado</p>
+<p>El código de abajo, además enseña a sacar la matriz varianza covarianza, en base a datos_limpios19
+para hacer más leible el ejercicio, c(a,b,c,d,e) quiere decir &ldquo;hacer columna con a,b,c,d,e&rdquo;.</p>
+<p>M &lt;- cbind quiere decir juntame todas esas columnas en el objeto M</p>
+<p>Entonces, así se hace:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-r" data-lang="r"><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>p5_aux <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">describe</span>(datos_limpios_19[2<span style="color:#ff79c6">:</span><span style="color:#bd93f9">6</span>])
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>auxiliar <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">describe</span>(datos_limpios_19)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>w <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">0.7307</span>,<span style="color:#bd93f9">0.0514</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0.2178</span>,<span style="color:#bd93f9">0</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>w2 <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">0.5924</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0.0916</span>,<span style="color:#bd93f9">0.3160</span>,<span style="color:#bd93f9">0</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>retorno_mvp19 <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">t</span>(w)<span style="color:#ff79c6">%*%</span>medias_19
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>retorno_tan19 <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">t</span>(w2)<span style="color:#ff79c6">%*%</span>medias_19
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>consumption <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">8.11</span>,<span style="color:#bd93f9">1.23</span>,<span style="color:#bd93f9">2.84</span>,<span style="color:#bd93f9">4.12</span>,<span style="color:#bd93f9">-6.33</span>,<span style="color:#bd93f9">6.88</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>manufacturing <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">9.04</span>,<span style="color:#bd93f9">4.18</span>,<span style="color:#bd93f9">0.7</span>,<span style="color:#bd93f9">2.44</span>,<span style="color:#bd93f9">-8.33</span>,<span style="color:#bd93f9">7.34</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>tech <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">8.97</span>,<span style="color:#bd93f9">5.23</span>,<span style="color:#bd93f9">3.3</span>,<span style="color:#bd93f9">6.07</span>,<span style="color:#bd93f9">-7.82</span>,<span style="color:#bd93f9">7.44</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>health <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">5.04</span>, <span style="color:#bd93f9">3.04</span>,<span style="color:#bd93f9">0.6</span>,<span style="color:#bd93f9">-3.06</span>,<span style="color:#bd93f9">-3.45</span>,<span style="color:#bd93f9">7.26</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>others <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">9.15</span>,<span style="color:#bd93f9">2.8</span>,<span style="color:#bd93f9">-1.27</span>,<span style="color:#bd93f9">6.61</span>,<span style="color:#bd93f9">-6.22</span>,<span style="color:#bd93f9">6.7</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>M <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">cbind</span>(consumption,manufacturing,tech,health,others)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>medias_19 <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">2.81</span>,<span style="color:#bd93f9">2.56</span>,<span style="color:#bd93f9">3.87</span>,<span style="color:#bd93f9">1.57</span>,<span style="color:#bd93f9">2.96</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>medias_rf_19 <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">0.20</span>,<span style="color:#bd93f9">0.20</span>,<span style="color:#bd93f9">0.20</span>,<span style="color:#bd93f9">0.20</span>,<span style="color:#bd93f9">0.20</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>sd_19 <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#bd93f9">5.15</span>,<span style="color:#bd93f9">6.16</span>,<span style="color:#bd93f9">6.04</span>,<span style="color:#bd93f9">4.34</span>,<span style="color:#bd93f9">5.79</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>varianza_19 <span style="color:#ff79c6">&lt;-</span> <span style="color:#50fa7b">c</span>(<span style="color:#50fa7b">sqrt</span>(<span style="color:#bd93f9">5.15</span>),<span style="color:#50fa7b">sqrt</span>(<span style="color:#bd93f9">6.16</span>),<span style="color:#50fa7b">sqrt</span>(<span style="color:#bd93f9">6.04</span>),<span style="color:#50fa7b">sqrt</span>(<span style="color:#bd93f9">4.34</span>),<span style="color:#50fa7b">sqrt</span>(<span style="color:#bd93f9">5.79</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>sharpe_indices19 <span style="color:#ff79c6">&lt;-</span> ((medias_19<span style="color:#ff79c6">-</span>medias_rf_19)<span style="color:#ff79c6">/</span>sd_19)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span><span style="color:#6272a4">#Comparamos</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span><span style="color:#6272a4">#########################################################################################</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span> tickers [1] <span style="color:#f1fa8c">&#34;Consumption&#34;</span>   <span style="color:#f1fa8c">&#34;Manufacturing&#34;</span> <span style="color:#f1fa8c">&#34;Tech&#34;</span>          <span style="color:#f1fa8c">&#34;Health&#34;</span>        <span style="color:#f1fa8c">&#34;Others&#34;</span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span><span style="color:#6272a4">#</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span> <span style="color:#bd93f9">10-18</span>   [1] <span style="color:#bd93f9">0.3077726</span>       <span style="color:#bd93f9">0.1741634</span>       <span style="color:#bd93f9">0.2743173</span>       <span style="color:#bd93f9">0.2857829</span>       <span style="color:#bd93f9">0.2196515</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span><span style="color:#6272a4">#</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>    <span style="color:#bd93f9">19</span>   [1] <span style="color:#bd93f9">0.5067961</span>       <span style="color:#bd93f9">0.3831169</span>       <span style="color:#bd93f9">0.6076159</span>       <span style="color:#bd93f9">0.3156682</span>       <span style="color:#bd93f9">0.4766839</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span><span style="color:#6272a4">#########################################################################################</span></span></span></code></pre></div>
+<p>Con eso finalizamos la pregunta #5</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/en/" >
+    &copy;  Ex Ungue Leonem | The Lion´s Lair 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

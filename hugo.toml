@@ -1,0 +1,101 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Ex Ungue Leonem | The Lion´s Lair'
+theme = "ananke"
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+
+[languages]
+
+  [languages.en]
+    languageName = "English"
+    weight = 1
+    contentDir = "content/en"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "home"
+        name = "Home"
+        url = "/en/"
+        weight = 1
+
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/en/whoami/"
+        weight = 2
+
+      [[languages.en.menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/en/posts/"
+        weight = 3
+
+      [[languages.en.menu.main]]
+        identifier = "categories"
+        name = "Categories"
+        url = "/en/categories/"
+        weight = 4
+
+  [languages.es]
+    languageName = "Español"
+    weight = 2
+    contentDir = "content/es"
+
+    [languages.es.menu]
+      [[languages.es.menu.main]]
+        identifier = "home"
+        name = "Inicio"
+        url = "/es/"
+        weight = 1
+
+      [[languages.es.menu.main]]
+        identifier = "about"
+        name = "Acerca de"
+        url = "/es/whoami/"
+        weight = 2
+
+      [[languages.es.menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/es/posts/"
+        weight = 3
+
+      [[languages.es.menu.main]]
+        identifier = "categories"
+        name = "Categorías"
+        url = "/es/categories/"
+        weight = 4
+
+
+[markup]
+  [markup.highlight]
+    noClasses = true     # Use CSS classes instead of inline styles
+    style = "dracula"     # Pick your Chroma theme
+    lineNos = true        # Optional: enable line numbers
+    lineNumbersInTable = true
+
+  [markup.goldmark]
+      [markup.goldmark.extensions]
+        [markup.goldmark.extensions.passthrough]
+          [markup.goldmark.extensions.passthrough.delimiters]
+            block = [['\[', '\]'], ['$$', '$$']]
+
+          [markup.goldmark.parser.smartPunctuation]
+            quotes = false
+            dashes = false
+
+[params]
+  custom_css = ["css/syntax.css"]
+  math = false 
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+  [params.social]
+    github = "https://www.github.com/fr0gz"
+    linkedin = "https://www.linkedin.com/in/cristian-guevara-kalil-04b289202/"
+
+

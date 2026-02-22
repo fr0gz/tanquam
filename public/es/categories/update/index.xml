@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Update on Ex Ungue Leonem | The Lion´s Lair</title>
+    <link>http://localhost:1313/es/categories/update/</link>
+    <description>Recent content in Update on Ex Ungue Leonem | The Lion´s Lair</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 10 Oct 2019 00:04:40 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/es/categories/update/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creando Un Blog Con Jekyll</title>
+      <link>http://localhost:1313/es/posts/creando-un-blog-con-jekyll/</link>
+      <pubDate>Thu, 10 Oct 2019 00:04:40 -0300</pubDate>
+      <guid>http://localhost:1313/es/posts/creando-un-blog-con-jekyll/</guid>
+      <description>Resumen Leyendo este post aprenderás: como crear un sitio web utilizando la herramienta jekyll. Para llegar a este objetivo, también aprenderás un poquito de: Linea de Comandos de windows, que es el lenguaje de programación ruby, que es el gestor de paquetes gem (porque te voy a enseñar a bajartelos y usarlos), como se desarrolla una investigación en internet para apoyar un diseño, y los criterios que utilicé para tomar decisiones con el objetivo de crear este blog.</description>
+    </item>
+  </channel>
+</rss>

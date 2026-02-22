@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Ex Ungue Leonem | The Lion´s Lair</title>
+    <link>http://localhost:1313/en/categories/</link>
+    <description>Recent content in Categories on Ex Ungue Leonem | The Lion´s Lair</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 10 Oct 2019 00:04:40 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Archive</title>
+      <link>http://localhost:1313/en/categories/archive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/categories/archive/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jekyll</title>
+      <link>http://localhost:1313/en/categories/jekyll/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/categories/jekyll/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Update</title>
+      <link>http://localhost:1313/en/categories/update/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/categories/update/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

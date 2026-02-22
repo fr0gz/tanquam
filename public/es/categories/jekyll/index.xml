@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jekyll on Ex Ungue Leonem | The Lion´s Lair</title>
+    <link>http://localhost:1313/es/categories/jekyll/</link>
+    <description>Recent content in Jekyll on Ex Ungue Leonem | The Lion´s Lair</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 10 Oct 2019 00:04:40 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/es/categories/jekyll/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creando Un Blog Con Jekyll</title>
+      <link>http://localhost:1313/es/posts/creando-un-blog-con-jekyll/</link>
+      <pubDate>Thu, 10 Oct 2019 00:04:40 -0300</pubDate>
+      <guid>http://localhost:1313/es/posts/creando-un-blog-con-jekyll/</guid>
+      <description>Resumen Leyendo este post aprenderás: como crear un sitio web utilizando la herramienta jekyll. Para llegar a este objetivo, también aprenderás un poquito de: Linea de Comandos de windows, que es el lenguaje de programación ruby, que es el gestor de paquetes gem (porque te voy a enseñar a bajartelos y usarlos), como se desarrolla una investigación en internet para apoyar un diseño, y los criterios que utilicé para tomar decisiones con el objetivo de crear este blog.</description>
+    </item>
+    <item>
+      <title>Probando el Rendimiento de Portafolios de Varianza Mínima y Tangencia en R</title>
+      <link>http://localhost:1313/es/posts/resolviendo-la-tarea-de-finanzas-i-con-hansen-paso-a-paso/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/es/posts/resolviendo-la-tarea-de-finanzas-i-con-hansen-paso-a-paso/</guid>
+      <description>Resumen Leyendo este post, aprenderas como resolver paso a paso la tarea #1 de Finanzas I del semestre primavera 2019. Eso incluye entender lo que te preguntan, cargar los datos, visualizar los datos o presentar valores o matrices según la naturaleza de la pregunta.&#xA;Testing Performance of Minimum Variance and Tangency Portfolios Doing out-of-sample-valuation with R&#xA;Cargar y preprocesar los datos Dependencias Para hacer lo que nos piden, primero es necesario cargar los datos.</description>
+    </item>
+  </channel>
+</rss>
