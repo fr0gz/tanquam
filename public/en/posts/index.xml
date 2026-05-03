@@ -16,11 +16,11 @@
       <description>Context he initial Power MOSFET layout automation system was implemented as a standalone Python script operating over a set of GDS block inputs.&#xA;The script was functional, but tightly coupled to:&#xA;hardcoded file paths internal configuration variables manual execution steps implicit assumptions about input structure&#xA;While suitable for experimentation, this approach limited reproducibility and made scaling or reuse across different designs difficult.&#xA;Problem The standalone script-based implementation introduced several structural limitations:</description>
     </item>
     <item>
-      <title>Eda Internship 02 Workstation</title>
+      <title>EDA Internship Series #2 — Reproducible Linux Workstation for EDA Workflows</title>
       <link>http://localhost:1313/en/posts/eda-internship-02-workstation/</link>
       <pubDate>Sat, 02 May 2026 20:40:26 -0400</pubDate>
       <guid>http://localhost:1313/en/posts/eda-internship-02-workstation/</guid>
-      <description>Context During my internship at AC3E / Synopsys, I was exposed to EDA tools and workflows used in integrated circuit design, particularly Synopsys-based environments running on Unix-like systems.&#xA;During this period, two recurring patterns became evident in the working environment:&#xA;On one hand, the shared server infrastructure—used to access critical EDA tools—was frequently unstable. When outages occurred, work would stall completely, since execution was tightly coupled to centralized resources.&#xA;On the other hand, many tasks were executed in highly heterogeneous local environments, where tools “worked if they worked”, depending on individual machine configuration and setup.</description>
+      <description>Context Electronic Design Automation (EDA) workflows are highly sensitive to environment configuration. Toolchains are complex, dependencies are implicit, and execution often assumes a pre-established system state.&#xA;During my internship, I repeatedly observed that productivity was not primarily limited by design complexity, but by environment friction: inconsistent setups, server dependency, and lack of reproducible local execution environments.&#xA;During this period, two recurring patterns became evident in the working environment:&#xA;On one hand, the shared server infrastructure—used to access critical EDA tools—was frequently unstable.</description>
     </item>
     <item>
       <title>EDA Internship Series #1 - From Tools to Systems</title>
