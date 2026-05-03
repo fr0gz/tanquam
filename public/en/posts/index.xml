@@ -6,14 +6,28 @@
     <description>Recent content on Ex Ungue Leonem | The Lion´s Lair</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 02 May 2026 20:11:51 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2026 22:20:23 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/en/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Eda Internship 01 Systems</title>
+      <title>EDA Internship Series #4 — Power MOSFET Layout Automation: from standalone script to CLI</title>
+      <link>http://localhost:1313/en/posts/eda-internship-03-powermosfetgenerator-cli/</link>
+      <pubDate>Sat, 02 May 2026 22:20:23 -0400</pubDate>
+      <guid>http://localhost:1313/en/posts/eda-internship-03-powermosfetgenerator-cli/</guid>
+      <description>##Context&#xA;he initial Power MOSFET layout automation system was implemented as a standalone Python script operating over a set of GDS block inputs.&#xA;The script was functional, but tightly coupled to:&#xA;hardcoded file paths internal configuration variables manual execution steps implicit assumptions about input structure&#xA;While suitable for experimentation, this approach limited reproducibility and made scaling or reuse across different designs difficult.&#xA;##Problem&#xA;The standalone script-based implementation introduced several structural limitations:</description>
+    </item>
+    <item>
+      <title>Eda Internship 02 Workstation</title>
+      <link>http://localhost:1313/en/posts/eda-internship-02-workstation/</link>
+      <pubDate>Sat, 02 May 2026 20:40:26 -0400</pubDate>
+      <guid>http://localhost:1313/en/posts/eda-internship-02-workstation/</guid>
+      <description>Context During my internship at AC3E / Synopsys, I was exposed to EDA tools and workflows used in integrated circuit design, particularly Synopsys-based environments running on Unix-like systems.&#xA;During this period, two recurring patterns became evident in the working environment:&#xA;On one hand, the shared server infrastructure—used to access critical EDA tools—was frequently unstable. When outages occurred, work would stall completely, since execution was tightly coupled to centralized resources.&#xA;On the other hand, many tasks were executed in highly heterogeneous local environments, where tools “worked if they worked”, depending on individual machine configuration and setup.</description>
+    </item>
+    <item>
+      <title>EDA Internship Series #1 - From Tools to Systems</title>
       <link>http://localhost:1313/en/posts/eda-internship-01-systems/</link>
       <pubDate>Sat, 02 May 2026 20:11:51 -0400</pubDate>
       <guid>http://localhost:1313/en/posts/eda-internship-01-systems/</guid>
-      <description></description>
+      <description>Context During my internship at AC3E /Synopsys, I was exposed to EDA tools and workflows focused on analog layout&#xA;Problem A recurring issue was the friction in the development environment:&#xA;Dependency on unstable servers Lack of structured tooling Implicit knowledge required to operate tools Approach Instead of focusing only on circuit design, i explored how to reduce friction in the sorrounding system:&#xA;-reproducible EDA workstation -CLI-based tooling -structured documentation&#xA;Takeaways EDA workflows are not only about tools, but about the systems that enable their effective use.</description>
     </item>
     <item>
       <title>My First Post</title>

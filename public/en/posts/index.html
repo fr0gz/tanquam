@@ -53,7 +53,7 @@
 
   <meta itemprop="name" content="Ex Ungue Leonem | The Lion´s Lair">
   <meta itemprop="description" content="Posts Technical writing on software, systems and engineering">
-  <meta itemprop="dateModified" content="2026-05-02T20:11:51-04:00">
+  <meta itemprop="dateModified" content="2026-05-02T22:20:23-04:00">
   <meta itemprop="wordCount" content="8">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ex Ungue Leonem | The Lion´s Lair">
@@ -146,12 +146,61 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     
     <h1 class="f3 near-black">
-      <a href="/en/posts/eda-internship-01-systems/" class="link black dim">
-        Eda Internship 01 Systems
+      <a href="/en/posts/eda-internship-03-powermosfetgenerator-cli/" class="link black dim">
+        EDA Internship Series #4 — Power MOSFET Layout Automation: from standalone script to CLI
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
+      ##Context
+he initial Power MOSFET layout automation system was implemented as a standalone Python script operating over a set of GDS block inputs.
+The script was functional, but tightly coupled to:
+hardcoded file paths internal configuration variables manual execution steps implicit assumptions about input structure
+While suitable for experimentation, this approach limited reproducibility and made scaling or reuse across different designs difficult.
+##Problem
+The standalone script-based implementation introduced several structural limitations:
+    </div>
+    <a href="/en/posts/eda-internship-03-powermosfetgenerator-cli/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
       
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    
+    <h1 class="f3 near-black">
+      <a href="/en/posts/eda-internship-02-workstation/" class="link black dim">
+        Eda Internship 02 Workstation
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Context During my internship at AC3E / Synopsys, I was exposed to EDA tools and workflows used in integrated circuit design, particularly Synopsys-based environments running on Unix-like systems.
+During this period, two recurring patterns became evident in the working environment:
+On one hand, the shared server infrastructure—used to access critical EDA tools—was frequently unstable. When outages occurred, work would stall completely, since execution was tightly coupled to centralized resources.
+On the other hand, many tasks were executed in highly heterogeneous local environments, where tools “worked if they worked”, depending on individual machine configuration and setup.
+    </div>
+    <a href="/en/posts/eda-internship-02-workstation/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    
+    <h1 class="f3 near-black">
+      <a href="/en/posts/eda-internship-01-systems/" class="link black dim">
+        EDA Internship Series #1 - From Tools to Systems
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Context During my internship at AC3E /Synopsys, I was exposed to EDA tools and workflows focused on analog layout
+Problem A recurring issue was the friction in the development environment:
+Dependency on unstable servers Lack of structured tooling Implicit knowledge required to operate tools Approach Instead of focusing only on circuit design, i explored how to reduce friction in the sorrounding system:
+-reproducible EDA workstation -CLI-based tooling -structured documentation
+Takeaways EDA workflows are not only about tools, but about the systems that enable their effective use.
     </div>
     <a href="/en/posts/eda-internship-01-systems/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
