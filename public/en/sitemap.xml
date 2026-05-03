@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/en/posts/</loc>
-    <lastmod>2026-05-02T20:11:51-04:00</lastmod>
+    <lastmod>2026-05-02T22:20:23-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -15,11 +15,11 @@
                 href="http://localhost:1313/en/posts/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/posts/eda-internship-01-systems/</loc>
-    <lastmod>2026-05-02T20:11:51-04:00</lastmod>
+    <loc>http://localhost:1313/en/posts/eda-internship-03-powermosfetgenerator-cli/</loc>
+    <lastmod>2026-05-02T22:20:23-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/en/</loc>
-    <lastmod>2026-05-02T20:11:51-04:00</lastmod>
+    <lastmod>2026-05-02T22:20:23-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -30,6 +30,50 @@
                 hreflang="en"
                 href="http://localhost:1313/en/"
                 />
+  </url><url>
+    <loc>http://localhost:1313/en/categories/</loc>
+    <lastmod>2026-05-02T20:40:26-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/categories/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/tags/eda/</loc>
+    <lastmod>2026-05-02T20:40:26-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/posts/eda-internship-02-workstation/</loc>
+    <lastmod>2026-05-02T20:40:26-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/categories/engineering/</loc>
+    <lastmod>2026-05-02T20:40:26-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/infrastructure/</loc>
+    <lastmod>2026-05-02T20:40:26-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/</loc>
+    <lastmod>2026-05-02T20:40:26-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/tags/tooling/</loc>
+    <lastmod>2026-05-02T20:40:26-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/posts/eda-internship-01-systems/</loc>
+    <lastmod>2026-05-02T20:11:51-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/en/posts/my-first-post/</loc>
     <lastmod>2025-05-23T21:07:40-04:00</lastmod>
@@ -68,19 +112,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://localhost:1313/en/categories/archive/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/categories/</loc>
-    <lastmod>2019-10-10T00:04:40-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/categories/"
                 />
   </url><url>
     <loc>http://localhost:1313/en/posts/creando-un-blog-con-jekyll/</loc>
@@ -145,18 +176,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://localhost:1313/en/whoami/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/tags/"
                 />
   </url>
 </urlset>

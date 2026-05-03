@@ -6,8 +6,15 @@
     <description>Recent content in Tooling on Ex Ungue Leonem | The Lion´s Lair</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 02 May 2026 20:11:51 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2026 20:40:26 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/en/tags/tooling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EDA Internship Series #2 — Reproducible Linux Workstation for EDA Workflows</title>
+      <link>http://localhost:1313/en/posts/eda-internship-02-workstation/</link>
+      <pubDate>Sat, 02 May 2026 20:40:26 -0400</pubDate>
+      <guid>http://localhost:1313/en/posts/eda-internship-02-workstation/</guid>
+      <description>Context Electronic Design Automation (EDA) workflows are highly sensitive to environment configuration. Toolchains are complex, dependencies are implicit, and execution often assumes a pre-established system state.&#xA;During my internship, I repeatedly observed that productivity was not primarily limited by design complexity, but by environment friction: inconsistent setups, server dependency, and lack of reproducible local execution environments.&#xA;During this period, two recurring patterns became evident in the working environment:&#xA;On one hand, the shared server infrastructure—used to access critical EDA tools—was frequently unstable.</description>
+    </item>
     <item>
       <title>EDA Internship Series #1 - From Tools to Systems</title>
       <link>http://localhost:1313/en/posts/eda-internship-01-systems/</link>
