@@ -6,8 +6,15 @@
     <description>Recent content in Engineering Blog - Cristian Guevara on Ex Ungue Leonem | The Lion´s Lair</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 02 May 2026 20:11:51 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2026 20:40:26 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eda Internship 02 Workstation</title>
+      <link>http://localhost:1313/en/posts/eda-internship-02-workstation/</link>
+      <pubDate>Sat, 02 May 2026 20:40:26 -0400</pubDate>
+      <guid>http://localhost:1313/en/posts/eda-internship-02-workstation/</guid>
+      <description>Context During my internship at AC3E / Synopsys, I was exposed to EDA tools and workflows used in integrated circuit design, particularly Synopsys-based environments running on Unix-like systems.&#xA;During this period, two recurring patterns became evident in the working environment:&#xA;On one hand, the shared server infrastructure—used to access critical EDA tools—was frequently unstable. When outages occurred, work would stall completely, since execution was tightly coupled to centralized resources.&#xA;On the other hand, many tasks were executed in highly heterogeneous local environments, where tools “worked if they worked”, depending on individual machine configuration and setup.</description>
+    </item>
     <item>
       <title>EDA Internship Series #1 - From Tools to Systems</title>
       <link>http://localhost:1313/en/posts/eda-internship-01-systems/</link>
