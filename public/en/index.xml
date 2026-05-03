@@ -9,11 +9,11 @@
     <lastBuildDate>Sat, 02 May 2026 22:20:23 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>EDA Internship Series #4 — Power MOSFET Layout Automation: from standalone script to CLI</title>
+      <title>EDA Internship Series #3 — Power MOSFET Layout Automation: from standalone script to CLI</title>
       <link>http://localhost:1313/en/posts/eda-internship-03-powermosfetgenerator-cli/</link>
       <pubDate>Sat, 02 May 2026 22:20:23 -0400</pubDate>
       <guid>http://localhost:1313/en/posts/eda-internship-03-powermosfetgenerator-cli/</guid>
-      <description>##Context&#xA;he initial Power MOSFET layout automation system was implemented as a standalone Python script operating over a set of GDS block inputs.&#xA;The script was functional, but tightly coupled to:&#xA;hardcoded file paths internal configuration variables manual execution steps implicit assumptions about input structure&#xA;While suitable for experimentation, this approach limited reproducibility and made scaling or reuse across different designs difficult.&#xA;##Problem&#xA;The standalone script-based implementation introduced several structural limitations:</description>
+      <description>Context he initial Power MOSFET layout automation system was implemented as a standalone Python script operating over a set of GDS block inputs.&#xA;The script was functional, but tightly coupled to:&#xA;hardcoded file paths internal configuration variables manual execution steps implicit assumptions about input structure&#xA;While suitable for experimentation, this approach limited reproducibility and made scaling or reuse across different designs difficult.&#xA;Problem The standalone script-based implementation introduced several structural limitations:</description>
     </item>
     <item>
       <title>Eda Internship 02 Workstation</title>

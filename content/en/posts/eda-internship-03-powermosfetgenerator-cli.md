@@ -1,11 +1,11 @@
 +++
-title = 'EDA Internship Series #4 — Power MOSFET Layout Automation: from standalone script to CLI'
+title = 'EDA Internship Series #3 — Power MOSFET Layout Automation: from standalone script to CLI'
 date = 2026-05-02T22:20:23-04:00
 draft = false
 
 +++
 
-##Context
+## Context
 
 he initial Power MOSFET layout automation system was implemented as a standalone Python script operating over a set of GDS block inputs.
 
@@ -18,7 +18,7 @@ implicit assumptions about input structure
 
 While suitable for experimentation, this approach limited reproducibility and made scaling or reuse across different designs difficult.
 
-##Problem
+## Problem
 
 The standalone script-based implementation introduced several structural limitations:
 
@@ -30,7 +30,7 @@ The workflow was not easily integrable into automated pipelines
 
 As a result, the system was difficult to reproduce, extend, or integrate into a larger engineering workflow.
 
-##Approach
+## Approach
 
 The system was refactored into a structured CLI-driven automation tool, designed to formalize execution and decouple configuration from implementation.
 
