@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Engineering on Ex Ungue Leonem | The Lion´s Lair</title>
+    <link>http://localhost:1313/en/categories/engineering/</link>
+    <description>Recent content in Engineering on Ex Ungue Leonem | The Lion´s Lair</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 02 May 2026 20:11:51 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/categories/engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EDA Internship Series #1 - From Tools to Systems</title>
+      <link>http://localhost:1313/en/posts/eda-internship-01-systems/</link>
+      <pubDate>Sat, 02 May 2026 20:11:51 -0400</pubDate>
+      <guid>http://localhost:1313/en/posts/eda-internship-01-systems/</guid>
+      <description>Context During my internship at AC3E /Synopsys, I was exposed to EDA tools and workflows focused on analog layout&#xA;Problem A recurring issue was the friction in the development environment:&#xA;Dependency on unstable servers Lack of structured tooling Implicit knowledge required to operate tools Approach Instead of focusing only on circuit design, i explored how to reduce friction in the sorrounding system:&#xA;-reproducible EDA workstation -CLI-based tooling -structured documentation&#xA;Takeaways EDA workflows are not only about tools, but about the systems that enable their effective use.</description>
+    </item>
+  </channel>
+</rss>
